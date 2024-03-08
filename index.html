@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>JS Registration Page</title>
+</head>
+<body>
+  <style>
+  
+        body {
+            background-color: lightblue;
+            font-size: 18px; 
+        }
+        h1, button, #orderDetails {
+            font-size: 24px; 
+        }
+        
+    </style>
+
+</head>
+<body onload="welcomeCustomer()">
+<h1>Welcome To My Website:)</h1>
+    <h1>Please Fill In All The Information Below "JavaScript Registration Page"  For The Best Results↓</h1>
+
+  <div class="container mt-5">
+    <h2>JS Registration Page</h2>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" id="firstName" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" class="form-control" id="dob" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="registerUser()">Register</button>
+    </form>
+    <div id="result" class="mt-3"></div>
+  </div>
+
+  <script>
+    function registerUser() {
+      // Get values from the form
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      var dob = document.getElementById('dob').value;
+
+      // Validate password
+      if (!/[!|?]/.test(password)) {
+        document.getElementById('result').innerHTML = '<div class="alert alert-danger">Password must contain either ! or ?</div>';
+        return;
+      }
+
+      // Create User Object
+      var user = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: '*'.repeat(password.length),
+        dob: dob
+      };
+
+      // Display result
+      document.getElementById('result').innerHTML = `
+        <div class="alert alert-success">
+          Registration Successful! <br>
+          First Name: ${user.firstName} <br>
+          Last Name: ${user.lastName} <br>
+          Email: ${user.email} <br>
+          Password: ${user.password} <br>
+          Date of Birth: ${user.dob}
+        </div>
+      `;
+    }
+  </script>
+<h1>Thanks for your time!</h1>
+</body>
+</html>
